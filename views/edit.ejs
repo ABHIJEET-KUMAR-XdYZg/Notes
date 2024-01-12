@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container hero">
+    <div class="row">
+        <div class="col">
+            <h5>Fill the inputs that you want to change</h5>
+        </div>
+    </div>
+    <div class="row mt-2 form-container">
+        <div class="col">
+            <form action="/editData" method="POST" enctype="multipart/form-data">
+                <input type="text" name="prvTitle" placeholder="Title" required>
+                <input type="text" name="newTitle" placeholder="New Title">
+                <input type="text" name="newDescription" placeholder="New Description...">
+                <input type="file" name="newUploadedImg">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

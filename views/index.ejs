@@ -1,0 +1,56 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container hero">
+  <% if(locals.showHeading){ %>
+    <div class="row mb-2">
+      <div class="col">
+        <h1>Welcome to NZOP] Notes</h1>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <form action="/create" method="GET">
+          <button type="/submit" class="button-75" role="button"><span class="text">Create a Note</span></button>
+        </form>
+      </div>
+    </div>
+  <% } %>
+  <% if(locals.showForm){ %>
+    <div class="row">
+      <div class="col">
+        <h5>Fill the inputs</h5>
+      </div>
+    </div>
+    <div class="row mt-2 form-container">
+      <div class="col">
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+          <input type="text" name="title" placeholder="Title" required>
+          <input type="text" name="description" placeholder="Description..." required>
+          <input type="file" name="uploadedImg" required>
+          <input type="submit" value="Create Blog">
+        </form>
+      </div>
+    </div>
+  <% } %>
+  <% if(locals.showDisplay){ %>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+      <% for (let [key, [value1,value2]] of data.entries()) { %>
+        <div class="col d-flex justify-content-center">
+          <div class="card h-100">
+              <img src="images/<%=value2%>" class="card-img-top" alt="Card">
+              <div class="card-body">
+                <h5 class="card-title"><%= key %></h5>
+                <p class="card-text"><%= value1 %></p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                <!-- <form action="/deleteCard/<%= key %>?_method=DELETE" method="POST">
+                  <button type="submit">Delete</button>
+                </form> -->
+              </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>
